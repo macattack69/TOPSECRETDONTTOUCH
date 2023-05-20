@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MERLINV2 ANIMATION SET.png-03af7daea06374358c1a229e326084c7.stex"
+path="res://.import/MERLINV2 ANIMATION SET.png-c2ffae34e1393b9250cea1f3da3cdbf6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MERLINV2 ANIMATION SET.png"
-dest_files=[ "res://.import/MERLINV2 ANIMATION SET.png-03af7daea06374358c1a229e326084c7.stex" ]
+source_file="res://Assets/old dont use/MERLINV2 ANIMATION SET.png"
+dest_files=[ "res://.import/MERLINV2 ANIMATION SET.png-c2ffae34e1393b9250cea1f3da3cdbf6.stex" ]
 
 [params]
 

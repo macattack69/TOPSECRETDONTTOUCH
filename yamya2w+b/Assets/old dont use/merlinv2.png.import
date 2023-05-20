@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/merlinv2.png-97c596a8aef6eb7900d9dd55d7cb9255.stex"
+path="res://.import/merlinv2.png-8333df6e7839050f11c46203e7438b7e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/merlinv2.png"
-dest_files=[ "res://.import/merlinv2.png-97c596a8aef6eb7900d9dd55d7cb9255.stex" ]
+source_file="res://Assets/old dont use/merlinv2.png"
+dest_files=[ "res://.import/merlinv2.png-8333df6e7839050f11c46203e7438b7e.stex" ]
 
 [params]
 
