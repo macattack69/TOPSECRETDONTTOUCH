@@ -1,17 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://player2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/grasstmap.png" type="Texture" id=2]
 [ext_resource path="res://Assets/dirtpath.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/barracks.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/trees.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/gate_closed.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/manazombie.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Barrack_WallExtended.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/gate_opened.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/barracks_wall.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/tree.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/fruit tree.tscn" type="PackedScene" id=12]
 
 [node name="World" type="Node2D"]
 
@@ -21,10 +13,6 @@ scale = Vector2( 1.23171, 1.61635 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 492, 318 )
-
-[node name="barrcks" parent="." instance=ExtResource( 4 )]
-position = Vector2( 327, -365 )
-scale = Vector2( 1.23171, 1.61635 )
 
 [node name="dirtpath" type="Sprite" parent="."]
 position = Vector2( -49, 111 )
@@ -46,72 +34,4 @@ position = Vector2( 42, 106 )
 [node name="zombie" parent="." instance=ExtResource( 7 )]
 position = Vector2( 61, 106 )
 
-[node name="trees" parent="." instance=ExtResource( 5 )]
-position = Vector2( -3, 39 )
-
-[node name="trees2" parent="." instance=ExtResource( 5 )]
-position = Vector2( -1, 78 )
-
-[node name="trees3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 27, 77 )
-
-[node name="trees4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 57, 78 )
-
-[node name="trees5" parent="." instance=ExtResource( 5 )]
-position = Vector2( 91, 78 )
-
-[node name="trees6" parent="." instance=ExtResource( 5 )]
-position = Vector2( 119, 76 )
-
-[node name="trees7" parent="." instance=ExtResource( 5 )]
-position = Vector2( 32, 40 )
-
-[node name="trees8" parent="." instance=ExtResource( 5 )]
-position = Vector2( 105, 40 )
-
-[node name="barrackswall" parent="." instance=ExtResource( 8 )]
-position = Vector2( 128, -71 )
-
-[node name="smallwall" parent="." instance=ExtResource( 10 )]
-position = Vector2( -2, -71 )
-
-[node name="Node2D" parent="." instance=ExtResource( 9 )]
-position = Vector2( 23, -71 )
-
-[node name="gate_closed" parent="." instance=ExtResource( 6 )]
-position = Vector2( 61, -71 )
-
-[node name="Node2D2" parent="." instance=ExtResource( 1 )]
-
-[node name="tree" parent="." instance=ExtResource( 11 )]
-position = Vector2( 158, -3.99997 )
-scale = Vector2( 1.23171, 1.61635 )
-
-[node name="tree2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 135, -14 )
-scale = Vector2( 1.23171, 1.61635 )
-
-[node name="tree3" parent="." instance=ExtResource( 11 )]
-position = Vector2( 142, 3.02792e-05 )
-scale = Vector2( 1.23171, 1.61635 )
-
-[node name="tree4" parent="." instance=ExtResource( 11 )]
-position = Vector2( 167, 7.00003 )
-scale = Vector2( 1.23171, 1.61635 )
-
-[node name="tree5" parent="." instance=ExtResource( 11 )]
-position = Vector2( 119, -24 )
-scale = Vector2( 1.23171, 1.61635 )
-
-[node name="fruit_tree" parent="." instance=ExtResource( 12 )]
-position = Vector2( 92, -18 )
-scale = Vector2( 1.23171, 1.61635 )
-
-[node name="fruit_tree2" parent="." instance=ExtResource( 12 )]
-position = Vector2( 119, 8 )
-scale = Vector2( 1.23171, 1.61635 )
-
-[node name="fruit_tree3" parent="." instance=ExtResource( 12 )]
-position = Vector2( 160, 25 )
-scale = Vector2( 1.23171, 1.61635 )
+[node name="Ghost" parent="." instance=ExtResource( 1 )]
