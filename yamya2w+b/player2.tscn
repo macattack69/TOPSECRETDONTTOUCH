@@ -35,6 +35,18 @@ func _physics_process(delta):
 
 [sub_resource type="Animation" id=1]
 resource_name = "Ghost Punch"
+tracks/0/type = "value"
+tracks/0/path = NodePath("GhostMovementTilemap:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle Down"
@@ -229,18 +241,18 @@ blend_point_3/node = SubResource( 20 )
 blend_point_3/pos = Vector2( 0, -0.9 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
 
 [sub_resource type="AnimationNodeStateMachine" id=24]
 states/Idle/node = SubResource( 16 )
-states/Idle/position = Vector2( 198, 69.2549 )
+states/Idle/position = Vector2( 78, 113.13 )
 states/Running/node = SubResource( 21 )
 states/Running/position = Vector2( 383.5, 69.0049 )
-transitions = [ "Idle", "Running", SubResource( 22 ), "Running", "Idle", SubResource( 23 ) ]
+transitions = [ "Idle", "Running", SubResource( 27 ), "Running", "Idle", SubResource( 28 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -189, -31.9951 )
+graph_offset = Vector2( -202.5, -8.37009 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=25]
 
@@ -250,7 +262,7 @@ script = SubResource( 26 )
 [node name="GhostMovementTilemap" type="Sprite" parent="."]
 position = Vector2( 0, 3 )
 texture = ExtResource( 2 )
-hframes = 20
+hframes = 36
 
 [node name="GhostPunchTilemap" type="Sprite" parent="."]
 visible = false
