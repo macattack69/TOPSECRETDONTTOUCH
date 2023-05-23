@@ -5,6 +5,7 @@
 
 [sub_resource type="GDScript" id=26]
 script/source = "extends KinematicBody2D
+signal hit
 
 const ACCELERATION = 250
 const max_speed = 60
