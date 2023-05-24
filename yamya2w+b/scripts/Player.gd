@@ -18,14 +18,20 @@ var velocity = Vector2.ZERO
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
-onready var end_of_gun = $endofgun
+#onready var end_of_gun = $endofgun
 var state = MOVE
 
 func _ready():
 	animationTree.active = true
 
 func _physics_process(delta):
-	move_state(delta)
+	match state:
+		MOVE:
+			move_state(delta)
+		ATTACK:
+			attack_state(delta)
+		DODGE:
+			dodge_state(delta)
 	
 func move_state(delta):
 	var input_vector = Vector2.ZERO
@@ -43,6 +49,12 @@ func move_state(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	velocity = move_and_slide(velocity)
+
+func attack_state(delta):
+	pass
+
+func dodge_state(delta):
+	pass
 
 #func _unhandled_input(event: InputEvent) -> void:
 #	if event.is_action_pressed("shoot"):
