@@ -5,3 +5,5 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 0.156863, 0.984314, 0.0392157, 1 )
+
+[connection signal="area_entered" from="." to="." method="_on_Hurtbox_area_entered"]

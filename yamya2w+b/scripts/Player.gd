@@ -14,7 +14,10 @@ enum {
 	DODGE,
 }
 
+export(int) var hp = 100
+
 var velocity = Vector2.ZERO
+
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
@@ -80,3 +83,9 @@ func dodge_state(delta):
 #	var bullet_instance = bullet.instance()
 #	add_child(bullet_instance)
 #	bullet_instance.global_position = end_of_gun.global_position
+
+
+func _on_Hurtbox_area_entered(hitbox):
+	var base_damage = hitbox.damage
+	self.hp -= base_damage
+	print(hitbox.get_parent().name + "touched " + name)
