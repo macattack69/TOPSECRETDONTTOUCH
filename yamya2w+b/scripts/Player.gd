@@ -71,6 +71,7 @@ func attack_animation_finished():
 func dodge_state(delta):
 	pass
 
+
 #func _unhandled_input(event: InputEvent) -> void:
 #	if event.is_action_pressed("shoot"):
 #		pass
