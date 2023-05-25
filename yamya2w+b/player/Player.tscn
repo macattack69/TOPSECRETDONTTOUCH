@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Assets/merlin.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -90,6 +90,126 @@ tracks/0/keys = {
 "values": [ 12 ]
 }
 
+[sub_resource type="Animation" id=53]
+resource_name = "Shoot Right"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 18, 3 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+
+[sub_resource type="Animation" id=54]
+resource_name = "Shoot Up"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 19, 6 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+
+[sub_resource type="Animation" id=55]
+resource_name = "Shoot down"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 16, 14 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+
+[sub_resource type="Animation" id=56]
+resource_name = "Shoot left"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 17, 9 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+
 [sub_resource type="Animation" id=36]
 resource_name = "run down"
 length = 0.45
@@ -158,6 +278,33 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7, 6 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=57]
+animation = "Shoot down"
+
+[sub_resource type="AnimationNodeAnimation" id=58]
+animation = "Shoot Right"
+
+[sub_resource type="AnimationNodeAnimation" id=59]
+animation = "Shoot Up"
+
+[sub_resource type="AnimationNodeAnimation" id=60]
+animation = "Shoot left"
+
+[sub_resource type="AnimationNodeAnimation" id=64]
+animation = "Shoot left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=61]
+blend_point_0/node = SubResource( 57 )
+blend_point_0/pos = Vector2( 0, 0.9 )
+blend_point_1/node = SubResource( 58 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 59 )
+blend_point_2/pos = Vector2( 0, -1 )
+blend_point_3/node = SubResource( 60 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_point_4/node = SubResource( 64 )
+blend_point_4/pos = Vector2( -1, 0 )
+
 [sub_resource type="AnimationNodeAnimation" id=41]
 animation = "Idle Left"
 
@@ -208,12 +355,18 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=52]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=62]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=63]
+
 [sub_resource type="AnimationNodeStateMachine" id=40]
+states/Attack/node = SubResource( 61 )
+states/Attack/position = Vector2( 263.5, 147 )
 states/Idle/node = SubResource( 45 )
 states/Idle/position = Vector2( 184.5, 72.5 )
 states/Running/node = SubResource( 46 )
 states/Running/position = Vector2( 360, 72.25 )
-transitions = [ "Idle", "Running", SubResource( 51 ), "Running", "Idle", SubResource( 52 ) ]
+transitions = [ "Idle", "Running", SubResource( 51 ), "Running", "Idle", SubResource( 52 ), "Idle", "Attack", SubResource( 62 ), "Attack", "Idle", SubResource( 63 ) ]
 start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=22]
@@ -223,7 +376,7 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-hframes = 16
+hframes = 24
 frame = 12
 region_rect = Rect2( 1, 2, 13, 14 )
 
@@ -241,6 +394,10 @@ current = true
 "anims/Idle Right" = SubResource( 35 )
 "anims/Idle Up" = SubResource( 33 )
 anims/RESET = SubResource( 32 )
+"anims/Shoot Right" = SubResource( 53 )
+"anims/Shoot Up" = SubResource( 54 )
+"anims/Shoot down" = SubResource( 55 )
+"anims/Shoot left" = SubResource( 56 )
 "anims/run down" = SubResource( 36 )
 "anims/run left" = SubResource( 37 )
 "anims/run right" = SubResource( 38 )
@@ -250,8 +407,9 @@ anims/RESET = SubResource( 32 )
 tree_root = SubResource( 40 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 22 )
+parameters/Attack/blend_position = Vector2( 0, 0 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Running/blend_position = Vector2( 0, 0 )
 
 [node name="endofgun" type="Position2D" parent="."]
-position = Vector2( 0, 6 )
+position = Vector2( 0, 4 )
