@@ -10,6 +10,7 @@ const FRICTION = 400
 enum {
 	MOVE,
 	ATTACK,
+	ATTACK2,
 	DODGE,
 }
 
@@ -30,6 +31,8 @@ func _physics_process(delta):
 			move_state(delta)
 		ATTACK:
 			attack_state(delta)
+		ATTACK2:
+			attack_state2(delta)
 		DODGE:
 			dodge_state(delta)
 	
@@ -43,6 +46,7 @@ func move_state(delta):
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Running/blend_position", input_vector)
 		animationTree.set("parameters/Attack/blend_position", input_vector)
+		animationTree.set("parameters/Attack2/blend_position", input_vector)
 		animationState.travel("Running")
 		velocity = velocity.move_toward(input_vector * max_speed, ACCELERATION * delta)
 	else:
@@ -53,13 +57,17 @@ func move_state(delta):
 	
 	if Input.is_action_just_pressed("shoot"):
 		state = ATTACK 
+	if Input.is_action_just_pressed("shoot2"):
+		state = ATTACK2
 
 func attack_state(delta):
 	animationState.travel("Attack")
 
+func attack_state2(delta):
+	animationState.travel("Attack2")
+
 func attack_animation_finished():
 	state = MOVE
-	print("state changed!")
 func dodge_state(delta):
 	pass
 
