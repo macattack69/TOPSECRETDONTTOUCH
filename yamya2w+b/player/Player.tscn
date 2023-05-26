@@ -12,6 +12,7 @@ height = 3.8879
 
 [sub_resource type="Animation" id=65]
 resource_name = "Attack Down 2"
+length = 1.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -31,7 +32,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.9 ),
+"times": PoolRealArray( 1.2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -45,10 +46,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.5, 1 ),
+"times": PoolRealArray( 0.9, 1.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=66]
@@ -219,18 +220,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 12 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
 }
 
 [sub_resource type="Animation" id=53]
@@ -548,7 +537,7 @@ radius = 6.0
 height = 2.0
 
 [sub_resource type="CircleShape2D" id=77]
-radius = 23.0868
+radius = 16.0312
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -565,6 +554,7 @@ region_rect = Rect2( 1, 2, 13, 14 )
 position = Vector2( -1.49012e-08, 6 )
 rotation = -1.58476
 shape = SubResource( 1 )
+disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -608,17 +598,17 @@ collision_mask = 4
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 3, 3 )
 shape = SubResource( 76 )
+disabled = true
 
 [node name="Hitbox" parent="." instance=ExtResource( 4 )]
-position = Vector2( -1, -1 )
+position = Vector2( 0, 1 )
 script = ExtResource( 5 )
-damage = 100
+damage = 50
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2( 1, 2 )
 shape = SubResource( 77 )
 
-[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]

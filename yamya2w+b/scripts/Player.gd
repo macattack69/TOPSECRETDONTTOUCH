@@ -38,7 +38,11 @@ func _physics_process(delta):
 			attack_state2(delta)
 		DODGE:
 			dodge_state(delta)
-	
+
+func die():
+	if hp < 0:
+		queue_free()
+
 func move_state(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -79,13 +83,34 @@ func dodge_state(delta):
 #	if event.is_action_pressed("shoot"):
 #		pass
 
-#func shoot():
+#func shoot(): 
 #	var bullet_instance = bullet.instance()
 #	add_child(bullet_instance)
 #	bullet_instance.global_position = end_of_gun.global_position
 
+#fuck this stupid game
+func take_damage(amount: int) -> void:
+	self.hp -= amount
+	print(name + "damaged:(")
 
-func _on_Hurtbox_area_entered(hitbox):
-	var base_damage = hitbox.damage
+
+#func _on_Hurtbox_body_entered(Hitbox: Node) -> void:
+#    var hitbox = Hitbox
+#    var base_damage = int(Hitbox.damage)
+#    self.hp -= base_damage
+#    var name = get_parent().name
+#    print(hitbox.get_parent().name + " touched " + name)
+
+
+#func _on_Hurtbox_body_entered(bhitbox:
+#	var base_damage = int(hitbox.damage)
+#	self.hp - base_damage
+#	print(hitbox.get_parent().name + "touched " + name)
+
+
+func _on_Hurtbox_area_entered(Hitbox: Node) -> void:
+	var hitbox = Hitbox
+	var base_damage = int(Hitbox.damage)
 	self.hp -= base_damage
-	print(hitbox.get_parent().name + "touched " + name)
+	var name = get_parent().name
+	print(hitbox.get_parent().name + " touched " + name)
