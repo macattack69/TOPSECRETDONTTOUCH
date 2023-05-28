@@ -74,7 +74,10 @@ func attack_state2(delta):
 	animationState.travel("Attack2")
 
 func attack_animation_finished():
+	animationPlayer.play("RESET")
+	print("animaiton reset")
 	state = MOVE
+
 func dodge_state(delta):
 	pass
 
