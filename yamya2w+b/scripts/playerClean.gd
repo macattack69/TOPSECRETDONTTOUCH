@@ -8,7 +8,7 @@ const ACCELERATION = 500
 const MAX_SPEED = 80
 const FRICTION = 500
 const DODGE_SPEED = 120
-const BULLET_SCENE = preload("res://Scenes/Bullet.tscn")
+const BULLET_SCENE = preload("res://bullet.tscn")
 
 enum {
 	MOVE,
