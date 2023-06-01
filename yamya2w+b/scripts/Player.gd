@@ -6,6 +6,7 @@ extends KinematicBody2D
 const ACCELERATION = 250
 const max_speed = 60
 const FRICTION = 400
+const DODGE_SPEED = 120
 
 enum {
 	MOVE,
@@ -17,6 +18,7 @@ enum {
 export(int) var hp = 100
 
 var velocity = Vector2.ZERO
+var dodge_vector = Vector2.DOWN 
 
 
 onready var animationPlayer = $AnimationPlayer
@@ -50,36 +52,44 @@ func move_state(delta):
 	input_vector = input_vector.normalized()
 
 	if input_vector != Vector2.ZERO:
+		dodge_vector = input_vector
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Running/blend_position", input_vector)
 		animationTree.set("parameters/Attack/blend_position", input_vector)
 		animationTree.set("parameters/Attack2/blend_position", input_vector)
+		animationTree.set("parameters/Dodge/blend_position", input_vector)
 		animationState.travel("Running")
 		velocity = velocity.move_toward(input_vector * max_speed, ACCELERATION * delta)
 	else:
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-	
-	velocity = move_and_slide(velocity)
-	
+
 	if Input.is_action_just_pressed("shoot"):
 		state = ATTACK 
 	if Input.is_action_just_pressed("shoot2"):
 		state = ATTACK2
+	if Input.is_action_just_pressed("dodge"):
+		state = DODGE
+
+func dodge_state(delta):
+	pass
 
 func attack_state(delta):
 	animationState.travel("Attack")
 
+#func move():
+	#velocity = move_and_slide(velocity)
+
 func attack_state2(delta):
 	animationState.travel("Attack2")
+
+func dodge_animation_finished():
+	state = MOVE
 
 func attack_animation_finished():
 	animationPlayer.play("RESET")
 	print("animaiton reset")
 	state = MOVE
-
-func dodge_state(delta):
-	pass
 
 
 #func _unhandled_input(event: InputEvent) -> void:

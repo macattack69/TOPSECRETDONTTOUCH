@@ -1,38 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/grasstmap.png" type="Texture" id=2]
-[ext_resource path="res://Assets/dirtpath.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/tilemap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/manazombie.tscn" type="PackedScene" id=7]
 
 [node name="World" type="Node2D"]
 
-[node name="ground" type="Sprite" parent="."]
-position = Vector2( -2, 0 )
-scale = Vector2( 1.23171, 1.61635 )
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 492, 318 )
-
-[node name="dirtpath" type="Sprite" parent="."]
-position = Vector2( -49, 111 )
-texture = ExtResource( 3 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 16, 240 )
-
-[node name="dirtpath2" type="Sprite" parent="."]
-position = Vector2( 151, 65 )
-rotation = 1.5708
-scale = Vector2( 1.06269, 0.935498 )
-texture = ExtResource( 3 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 15.5322, 419 )
+[node name="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( -966, -417 )
 
 [node name="zombie2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 42, 106 )
+position = Vector2( -143, -159 )
 
 [node name="zombie" parent="." instance=ExtResource( 7 )]
-position = Vector2( 61, 106 )
+position = Vector2( -97, -158 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -19, 9 )

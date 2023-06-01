@@ -1,7 +1,7 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Assets/merlin.png" type="Texture" id=1]
-[ext_resource path="res://scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://scripts/playerClean.gd" type="Script" id=2]
 [ext_resource path="res://Assets/overlap/Hurtbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/overlap/Hitbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/overlap/HitBox_Merlin_Ult.gd" type="Script" id=5]
@@ -46,10 +46,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.9, 1.1 ),
+"times": PoolRealArray( 0.1, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=66]
@@ -136,6 +136,48 @@ tracks/1/keys = {
 "values": [ {
 "args": [  ],
 "method": "attack_animation_finished"
+} ]
+}
+
+[sub_resource type="Animation" id=78]
+resource_name = "Dodge"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 26, 28 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "dodge_animation_finished"
 } ]
 }
 
@@ -472,6 +514,29 @@ blend_point_3/node = SubResource( 72 )
 blend_point_3/pos = Vector2( -1, 0 )
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id=82]
+animation = "Dodge"
+
+[sub_resource type="AnimationNodeAnimation" id=83]
+animation = "Dodge"
+
+[sub_resource type="AnimationNodeAnimation" id=84]
+animation = "Dodge"
+
+[sub_resource type="AnimationNodeAnimation" id=85]
+animation = "Dodge"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=79]
+blend_point_0/node = SubResource( 82 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 83 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 84 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 85 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id=41]
 animation = "Idle Left"
 
@@ -530,17 +595,24 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=75]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=80]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=81]
+
 [sub_resource type="AnimationNodeStateMachine" id=40]
 states/Attack/node = SubResource( 61 )
 states/Attack/position = Vector2( 186.75, 173 )
 states/Attack2/node = SubResource( 73 )
-states/Attack2/position = Vector2( 365, 157 )
+states/Attack2/position = Vector2( 189.25, 8 )
+states/Dodge/node = SubResource( 79 )
+states/Dodge/position = Vector2( -23.9336, 54 )
 states/Idle/node = SubResource( 45 )
 states/Idle/position = Vector2( 184.5, 72.5 )
 states/Running/node = SubResource( 46 )
 states/Running/position = Vector2( 360, 72.25 )
-transitions = [ "Idle", "Running", SubResource( 51 ), "Running", "Idle", SubResource( 52 ), "Idle", "Attack", SubResource( 62 ), "Attack", "Idle", SubResource( 63 ), "Attack2", "Idle", SubResource( 74 ), "Idle", "Attack2", SubResource( 75 ) ]
+transitions = [ "Idle", "Running", SubResource( 51 ), "Running", "Idle", SubResource( 52 ), "Idle", "Attack", SubResource( 62 ), "Attack", "Idle", SubResource( 63 ), "Attack2", "Idle", SubResource( 74 ), "Idle", "Attack2", SubResource( 75 ), "Idle", "Dodge", SubResource( 80 ), "Dodge", "Idle", SubResource( 81 ) ]
 start_node = "Idle"
+graph_offset = Vector2( -153.934, 0 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 
@@ -576,6 +648,7 @@ current = true
 "anims/Attack Left 2" = SubResource( 66 )
 "anims/Attack Right 2" = SubResource( 67 )
 "anims/Attack Up 2" = SubResource( 68 )
+anims/Dodge = SubResource( 78 )
 "anims/Idle Down" = SubResource( 31 )
 "anims/Idle Left" = SubResource( 34 )
 "anims/Idle Right" = SubResource( 35 )
@@ -593,9 +666,11 @@ anims/RESET = SubResource( 32 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 40 )
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource( 22 )
 parameters/Attack/blend_position = Vector2( 0, 0 )
-parameters/Attack2/blend_position = Vector2( 0, 0 )
+parameters/Attack2/blend_position = Vector2( -0.00158477, -0.00578034 )
+parameters/Dodge/blend_position = Vector2( 0, 0 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Running/blend_position = Vector2( 0, 0 )
 
@@ -620,7 +695,6 @@ damage = 50
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 77 )
-disabled = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
