@@ -10,10 +10,10 @@
 position = Vector2( -966, -417 )
 
 [node name="zombie2" parent="." instance=ExtResource( 7 )]
-position = Vector2( -143, -159 )
+position = Vector2( -63, -71 )
 
 [node name="zombie" parent="." instance=ExtResource( 7 )]
-position = Vector2( -97, -158 )
+position = Vector2( 20, -70 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -19, 9 )
