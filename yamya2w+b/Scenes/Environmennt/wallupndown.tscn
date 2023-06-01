@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/tilemap1.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2, 53 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2" type="Sprite" parent="StaticBody2D"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 352, 240, 4, 16 )
+
+[node name="Sprite3" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 0, -15 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 352, 240, 4, 16 )
+
+[node name="Sprite4" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 0, 15 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 352, 240, 4, 16 )
+
+[node name="Sprite5" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 0, -30 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 352, 240, 4, 16 )
+
+[node name="Sprite7" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 0, -45 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 352, 240, 4, 16 )
+
+[node name="Sprite6" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 0, 30 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 352, 240, 4, 16 )
+
+[node name="Sprite8" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 0, 45 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 352, 240, 4, 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )

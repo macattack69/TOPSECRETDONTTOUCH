@@ -12,19 +12,19 @@ extents = Vector2( 48.5, 6.625 )
 [node name="Sprite" type="Sprite" parent="StaticBody2D"]
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 94, 65, 33, 15 )
+region_rect = Rect2( 271, 249, 31, 15 )
 
 [node name="Sprite2" type="Sprite" parent="StaticBody2D"]
 position = Vector2( 32, 0 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 94, 65, 33, 15 )
+region_rect = Rect2( 270, 249, 33, 15 )
 
 [node name="Sprite3" type="Sprite" parent="StaticBody2D"]
 position = Vector2( -32, 0 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 94, 65, 33, 15 )
+region_rect = Rect2( 270, 249, 33, 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 0, 1 )
