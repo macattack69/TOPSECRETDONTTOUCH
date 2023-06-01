@@ -1,11 +1,14 @@
 extends Area2D
 
-export (int) var speed = 120
+export var speed = 200
 
+var velocity = Vector2.ZERO
 
+func _physics_process(delta):
+	position += velocity * delta
 
-var direction
+func set_direction(direction: Vector2):
+	velocity = direction.normalized() * speed
 
-
-func _physics_process(delta: float) -> void:
-	pass
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()

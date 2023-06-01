@@ -8,6 +8,7 @@ const ACCELERATION = 500
 const MAX_SPEED = 80
 const FRICTION = 500
 const DODGE_SPEED = 120
+const BULLET_SCENE = preload("res://Scenes/Bullet.tscn")
 
 enum {
 	MOVE,
@@ -80,7 +81,14 @@ func dodgeState(delta):
 
 func attackState(delta):
 	animationState.travel("Attack")
+	createBullet()
 
+func createBullet():
+	var bulletInstance = BULLET_SCENE.instance()
+	add_child(bulletInstance)
+	bulletInstance.global_position = global_position
+	bulletInstance.set_direction(dodgeVector)
+	
 func move():
 	velocity = move_and_slide(velocity)
 
