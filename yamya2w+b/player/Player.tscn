@@ -694,6 +694,7 @@ damage = 50
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 77 )
+disabled = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 

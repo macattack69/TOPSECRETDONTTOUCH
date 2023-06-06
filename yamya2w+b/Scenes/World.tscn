@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/tilemap.tscn" type="PackedScene" id=2]
@@ -7,9 +7,13 @@
 [ext_resource path="res://Scenes/Environmennt/wallupndown.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Environmennt/wallAngled.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/manazombie.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Environmennt/gate_closed.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/peterson_gryfanson.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/Environmennt/WallAngledFlipped.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Environmennt/barracks_wall.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/stevie_griffan.png" type="Texture" id=11]
+[ext_resource path="res://Assets/loins_infanticide.png" type="Texture" id=12]
+[ext_resource path="res://Assets/megathrob_gryphantide.png" type="Texture" id=13]
+[ext_resource path="res://Assets/chrischan_griffan.png" type="Texture" id=14]
 
 [node name="World" type="Node2D"]
 
@@ -32,9 +36,6 @@ position = Vector2( 128, 74 )
 
 [node name="bigwall5" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( -90, -155 )
-
-[node name="Node2D2" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( -23, -155 )
 
 [node name="bigwall6" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 44, -155 )
@@ -72,5 +73,28 @@ position = Vector2( 66, 74 )
 [node name="gate_opened" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( -24, -61 )
 
+[node name="gate_opened2" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -24, -155 )
+
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( -19, 9 )
+
+[node name="ChrischanGriffan" type="Sprite" parent="."]
+position = Vector2( -17, -386 )
+texture = ExtResource( 14 )
+
+[node name="LoinsInfanticide" type="Sprite" parent="."]
+position = Vector2( 13, -387 )
+texture = ExtResource( 12 )
+
+[node name="MegathrobGryphantide" type="Sprite" parent="."]
+position = Vector2( -7, -370 )
+texture = ExtResource( 13 )
+
+[node name="PetersonGryfanson" type="Sprite" parent="."]
+position = Vector2( 16, -372 )
+texture = ExtResource( 8 )
+
+[node name="StevieGriffan" type="Sprite" parent="."]
+position = Vector2( -10, -402 )
+texture = ExtResource( 11 )
