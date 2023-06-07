@@ -44,7 +44,7 @@ func _physics_process(delta):
 
 func die():
 	if hp < 0:
-		queue_free()
+		self.queue_free()
 
 func moveState(delta):
 	var inputVector = Vector2.ZERO

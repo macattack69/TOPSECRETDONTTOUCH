@@ -6,6 +6,7 @@ var velocity = Vector2.ZERO
 
 func _physics_process(delta):
 	position += velocity * delta
+	$AnimationPlayer.play("fireball")
 
 func set_direction(direction: Vector2):
 	velocity = direction.normalized() * speed
